@@ -16,9 +16,9 @@ import ForgotPassword from "./Pages/ForgotPassword";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 
+import CitizenAnnouncementsPage from "./Pages/Citiizenmenu/Citizenannouncementspage";
 import ComplaintManagement from "./Pages/Citiizenmenu/Complaintmanagement";
 import SchemesApplyPage from "./Pages/Citiizenmenu/Schemesapplypage";
-import ServiceRequestPage from "./Pages/Citiizenmenu/Servicerequestpage";
 import ComplaintsPage from "./Pages/Officermenu/Complaintspage ";
 import SchemesPage from "./Pages/Officermenu/Schemespage";
 import UsersPage from "./Pages/Officermenu/Userspage";
@@ -108,11 +108,19 @@ export default function App() {
             }
           />
 
-          <Route
-            path="/citizen/services/new"
+        <Route
+          path="/citizen/announcements"
+          element={
+            <ProtectedRoute allowedRoles={["CITIZEN"]}>
+              <CitizenAnnouncementsPage />
+            </ProtectedRoute>
+          }
+        />
+                    <Route
+            path="/citizen/services/announcements"
             element={
               <ProtectedRoute allowedRoles={["CITIZEN"]}>
-                <ServiceRequestPage />
+                <CitizenAnnouncementsPage />
               </ProtectedRoute>
             }
           />
